@@ -16,31 +16,5 @@
         "address": "Cairo",
         "country": "USA",
         "gender": "male"
-    },
-     {
-        "firstname": "Rahma",
-        "lastname": "Khaled",
-        "username": "Rahma Khaled",
-        "department": "Open Source",
-        "address": "Cairo",
-        "country": "USA",
-        "gender": "male"
-    }, {
-        "firstname": "Rahma",
-        "lastname": "Khaled",
-        "username": "Rahma Khaled",
-        "department": "Open Source",
-        "address": "Cairo",
-        "country": "USA",
-        "gender": "male"
-    },
-     {
-        "firstname": "Rahma",
-        "lastname": "Khaled",
-        "username": "Rahma Khaled",
-        "department": "Open Source",
-        "address": "Cairo",
-        "country": "USA",
-        "gender": "male"
     }
 ]
