@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <script src="socket.io/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    /* Your custom styles can go here */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+    }
+  </style>
+</head>
+<body class="container">
+  <div class="row mt-5">
+    <div class="col-lg-6 mx-auto">
+      <!-- Header -->
+      <h1>Welcome, <span id="username"></span>!</h1>
+      
+      <!-- Chat messages -->
+      <ul id="messages" class="list-group"></ul>
+
+      <!-- Message form -->
+      <form id="form" class="mt-3">
+        <div class="input-group">
+          <input id="input" type="text" class="form-control" autocomplete="off" />
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="submit">Send</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const socket = window.io();
+    // Prompt for user's name
+    const username = prompt("Enter your name:");
+    // Set the username in the header
+    $('#username').text(username);
+
+    $('form').submit(function(e){
+      e.preventDefault();
+      const message = `${username}: ${$('#input').val()}`; // Prepend username to message
+      socket.emit('chat message', message);
+      $('#input').val('');
+      return false;
+    });
+
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg).addClass('list-group-item'));
+      window.scrollTo(0, document.body.scrollHeight);
+    });
+  </script>
+</body>
+</html>
